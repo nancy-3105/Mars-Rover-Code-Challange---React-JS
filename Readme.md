@@ -39,12 +39,12 @@ To run the Mars Rovers Simulation code in a React application, follow these step
 
 ## Create a React Application: If you don't have a React app, create one using create-react-app.
 
-## Replace Files: Replace the contents of the src/App.js file with the code from the RoverSimulation component. Create a new RoverSimulation.js file in the src directory and paste the RoverSimulation component code there.
-
 ## Install Dependencies: Install the required testing libraries using npm install.
 
 ## \*\*Update src/App.js: Update the src/App.js file to include the import statement for the RoverSimulation component.
 
-## Start the React Development Server: Start the development server using npm start. The React application will open in a web browser at http://localhost:3000/.
+## \*\*Update libraries: Update the import libraries.
 
-## Run Tests (Optional): If you want to run the provided Jest tests, use the npm test command.
+## Start the React Development Server: Start the development server using npm start. 
+
+## Run Tests: If you want to run the provided Jest tests, use the npm test command.
