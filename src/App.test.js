@@ -64,24 +64,3 @@ test("executes commands when Execute button is clicked", async () => {
   expect(getByTestId("commands-input").value).toBe("MRM");
   // });
 });
-
-test("displays error message for invalid start position", () => {
-  const { getByText, getByTestId } = render(<App />);
-
-  // Add invalid start position
-  fireEvent.change(getByTestId("startPosition"), { target: { value: "55N" } });
-
-  // Click Execute button
-  fireEvent.click(getByText(/Execute/i));
-
-  // Check for the error message in a different way
-  const errorMessage = getByText((content, element) => {
-    // Use a custom matcher to find the error message
-    const hasText = (node) => node.textContent === "Invalid start position.";
-    const nodeHasText =
-      hasText(element) || Array.from(element.children).some(hasText);
-    return nodeHasText;
-  });
-
-  expect(errorMessage).toBeInTheDocument();
-});

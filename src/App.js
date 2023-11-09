@@ -1,5 +1,4 @@
 import React from "react";
-import { render } from "react-dom";
 import "./styles.css";
 import Mars from "./Mars";
 
@@ -8,18 +7,18 @@ class App extends React.Component {
     commands: "",
     commandsToExecute: "",
     execute: false,
-    startPosition: "00N"
+    startPosition: "00N",
   };
 
   addCommand = (e) => {
     this.setState({
-      commands: this.state.commands + e.target.value
+      commands: this.state.commands + e.target.value,
     });
   };
 
   runSample = (e) => {
     this.setState({
-      commands: e.target.value
+      commands: e.target.value,
     });
   };
 
@@ -29,7 +28,7 @@ class App extends React.Component {
       this.setState({
         execute: true,
         commandsToExecute: this.state.commands,
-        startPosition
+        startPosition,
       });
     } else {
       alert("Invalid start position.");
@@ -40,7 +39,7 @@ class App extends React.Component {
     this.setState({
       commands: "",
       execute: false,
-      commandsToExecute: ""
+      commandsToExecute: "",
     });
   };
 
@@ -50,7 +49,7 @@ class App extends React.Component {
 
   stopExecute = () => {
     this.setState({
-      execute: false
+      execute: false,
     });
   };
 
@@ -60,13 +59,6 @@ class App extends React.Component {
     return (
       <div className={"app"}>
         <h1 className={"app-name"}>Mars Rover in JavaScript / React</h1>
-        <a
-          className={"source"}
-          href={"https://github.com/vraa/marsrover"}
-          title={"Source code for Mars Rover in JavaScript / React"}
-        >
-          Source
-        </a>
         <div className={`control-panel`}>
           <div className={"start-position"}>
             <label htmlFor="startPosition">Start Position (Eg; 00N):</label>
@@ -108,21 +100,6 @@ class App extends React.Component {
             <button className={"cta"} onClick={this.execute}>
               Execute
             </button>
-          </div>
-          <div className="samples">
-            <label>Sample: </label>
-            <ul>
-              <li>
-                <button value={"MMRMMLMMRM"} onClick={this.runSample}>
-                  MMRMMLMMRM
-                </button>
-              </li>
-              <li>
-                <button value={"RMMMLMRMLM"} onClick={this.runSample}>
-                  RMMMLMRMLM
-                </button>
-              </li>
-            </ul>
           </div>
         </div>
         <Mars

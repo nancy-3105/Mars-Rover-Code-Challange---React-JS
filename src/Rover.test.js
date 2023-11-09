@@ -1,25 +1,34 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect"; // for "toHaveClass" matcher
+import { render } from "@testing-library/react";
+import { getByText, queryByText } from "@testing-library/jest-dom";
 import Rover from "./Rover";
 
 describe("Rover component", () => {
-  test('should have classname "rover N ghost" when facing is N and ghost is true', () => {
-    // Arrange
-    const props = {
-      facing: "N",
-      ghost: true
-    };
+  test("renders Rover component with default props", () => {
+    const { container } = render(<Rover />);
 
-    // Act
-    const { container } = render(<Rover {...props} />);
-    const spanElement = container.querySelector("span");
-
-    // Assert
-    expect(spanElement).toHaveClass("rover");
-    expect(spanElement).toHaveClass("N");
-    expect(spanElement).toHaveClass("ghost");
+    // Verify that the component renders with the default props
+    expect(queryByText(container, /🛦/)).toBeInTheDocument();
   });
 
-  // Add more test cases if needed
+  test("renders Rover component with specified facing direction", () => {
+    const { getByText } = render(<Rover facing="N" />);
+    // Verify that the component renders with the specified facing direction
+    expect(getByText(/🛦/).classList.contains("N")).toBe(true);
+  });
+
+  test("renders Rover component as a ghost", () => {
+    const { getByText } = render(<Rover ghost />);
+
+    // Verify that the component renders as a ghost
+    expect(getByText(/🛦/).classList.contains("ghost")).toBe(true);
+  });
+
+  test("renders Rover component with specified facing direction and as a ghost", () => {
+    const { getByText } = render(<Rover facing="E" ghost />);
+
+    // Verify that the component renders with the specified facing direction and as a ghost
+    expect(getByText(/🛦/).classList.contains("E")).toBe(true);
+    expect(getByText(/🛦/).classList.contains("ghost")).toBe(true);
+  });
 });
